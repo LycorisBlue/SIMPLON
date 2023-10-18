@@ -24,6 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $requete_email_existe->execute([$email]);
 
         if ($requete_email_existe->rowCount() > 0) {
+            header("Location: ../sq.php");
             $message = "L'adresse e-mail est déjà utilisée. Veuillez en choisir une autre.";
         } else {
             // Insérer un nouvel utilisateur dans la base de données
@@ -35,7 +36,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();
         }
     } catch (PDOException $e) {
-        header("Location: ../redirection.php");
+        header("Location: ../sq.php");
+        // header("Location: ../redirection.php");
         die("Erreur lors de l'inscription de l'utilisateur : " . $e->getMessage());
     }
 }

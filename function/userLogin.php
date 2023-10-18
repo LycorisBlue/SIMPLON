@@ -30,11 +30,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: section.php");
             exit();
         } else {
+            header("Location: ../sq.php");
             $message = "Adresse e-mail ou mot de passe incorrect.";
             // echo $message;
         }
     } catch (PDOException $e) {
-        header("Location: ../redirection.php");
+        header("Location: ../sq.php");
         die("Erreur lors de la connexion de l'utilisateur : " . $e->getMessage());
     }
 }
